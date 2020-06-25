@@ -1,8 +1,8 @@
 /*
 Small Growth  | Constant      f(n) = 1
-              | Logarithmic   f(n) = log(n)
+              | Logarithmic   f(n) = log(n) | Halving the information at each iteration
               | Linear        f(n) = n
-              | Log Linear    f(n) = n * log(n)
+              | Log Linear    f(n) = n * log(n) | Quasi Linear also
               | Polynomial    f(n) = n^{2} -> n^{3}, n^{4}, ...
               | Exponential   f(n) = 2^{n} -> 3^{n}, 4^{n}, ...
 Large Growth  V Factorial     f(n) = n!
