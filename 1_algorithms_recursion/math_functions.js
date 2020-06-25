@@ -71,10 +71,10 @@ n   | f(n)
 
 
 Key thing to take away is the behavior of these functions which show up in order
-  * Linear Log - Biggest
+  * Linear Log - Biggest/Steepest
   * Linear
   * Log
-  * Constant - Smallest
+  * Constant - Smallest/Flat
   
-  
+
 */
