@@ -126,8 +126,17 @@ function pow(base, exponent) {
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
+    let array = []
 
+    if (!Array.isArray(data)) return [data];
+
+    data.forEach(item => {
+        array.push(...flatten(item)); // App Academy Solution
+    })
+
+    return array;
 }
+
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
 // The function should return true, if the file is contained anywhere in the given directories.
