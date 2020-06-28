@@ -186,9 +186,11 @@ console.log(flatten(array_1));
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
-    // if (!Array.isArray(directories)) return false;
-
-    console.log(flatten(Object.keys(directories)));
+    for (let folder in directories) {
+        if (folder === targetFile || fileFinder(directories[folder], targetFile) === true) {
+            return true;
+        }
+    }
 
     return false;
 }
