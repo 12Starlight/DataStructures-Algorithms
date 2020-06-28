@@ -17,9 +17,18 @@
 // lucasNumber(5)   // => 11
 // lucasNumber(9)   // => 76
 function lucasNumber(n) {
+    if (n === 0) return 2;
+    if (n === 1) return 1;
 
+    return lucasNumber(n - 1) + lucasNumber(n - 2);
 }
 
+lucasNumber(0);   // => 2
+lucasNumber(1);   // => 1
+lucasNumber(2);   // => 3
+lucasNumber(3);   // => 4
+lucasNumber(5);   // => 11
+lucasNumber(9);   // => 76
 
 // Write a function, sumArray(array), that takes in an array of numbers.
 // The function should return the total sum of the elements.
