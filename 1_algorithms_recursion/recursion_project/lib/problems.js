@@ -63,7 +63,8 @@ function sumArray(array) {
 function reverseString(str) {
  if (str.length === 0) return '';
 
- return str[str.length - 1] + reverseString(str.slice(0, str.length - 1));
+//  return str[str.length - 1] + reverseString(str.slice(0, str.length - 1)); // My solution
+ return reverseString(str.slice(1)) + str[0] // App Academy Solution
 }
 
 
