@@ -238,8 +238,21 @@ console.log(fileFinder(desktop, 'app_academy_logo.svg'));
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
+    let path = [];
+    let logic = false; 
+    
+    for (let folder in directories) {
+        if (folder === targetFile || pathFinder(directories[folder], targetFile) === logic) {
+            logic = true; 
+            path.push('/' + folder);
+            return path.join('');
+        }
+    }
 
+    return null; 
 }
+
+console.log(pathFinder(desktop, 'trixie_lou.jpeg')); 
 
 
 module.exports = {
