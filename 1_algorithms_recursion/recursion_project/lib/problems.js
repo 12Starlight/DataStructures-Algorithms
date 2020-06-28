@@ -186,8 +186,44 @@ console.log(flatten(array_1));
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
+    // if (!Array.isArray(directories)) return false;
 
+    console.log(flatten(Object.keys(directories)));
+
+    return false;
 }
+
+let desktop = {
+    '/images': {
+        'app_academy_logo.svg': null,
+        '/parks': {
+            'yosemite.jpeg': null,
+            'acadia.jpeg': null,
+            'yellowstone.png': null
+        },
+        '/pets': {
+            'trixie_lou.jpeg': null,
+            'rolo.jpeg': null,
+            'opal.jpeg': null,
+            'diana.jpeg': null,
+        }
+    },
+    '/music': {
+        'hey_programmers.mp3': null,
+        '/genres': {
+            '/rock': {
+                'everlong.flac': null,
+                'livin_on_a_prayer.mp3': null
+            },
+            '/hip_hop': {
+                'express_yourself.wav': null,
+                'ny_state_of_mind.mp3': null
+            }
+        }
+    }
+};
+
+console.log(fileFinder(desktop, 'app_academy_logo.svg'));
 
 
 // Write another function, pathFinder(directories, targetFile), that returns the path that contains the targetFile.
