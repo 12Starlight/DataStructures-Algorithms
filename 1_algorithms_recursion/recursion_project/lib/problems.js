@@ -237,15 +237,15 @@ console.log(fileFinder(desktop, 'app_academy_logo.svg'));
 // pathFinder(desktop, 'trixie_lou.jpeg'));     // => '/images/pets/trixie_lou.jpeg'
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
-function pathFinder(directories, targetFile) {
-    let path = [];
-    let logic = false; 
-    
-    for (let folder in directories) {
-        if (folder === targetFile || pathFinder(directories[folder], targetFile) === logic) {
-            logic = true; 
-            path.push('/' + folder);
-            return path.join('');
+function pathFinder(directories, targetFile) {    
+    for (let folder in directories) {   
+        if (folder === targetFile) {
+            return '/' + folder;
+        }
+        
+        let path = pathFinder(directories[folder], targetFile)
+        if (path !== null) {
+            return folder + path;
         }
     }
 
