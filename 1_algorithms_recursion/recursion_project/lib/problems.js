@@ -132,10 +132,19 @@ function flatten(data) {
 
     data.forEach(item => {
         array.push(...flatten(item)); // App Academy Solution
+        // if (Array.isArray(item)) {
+        //     console.log('inside')
+        //     flatten(item);
+        // } else {
+        //     array.push(item); 
+        // }
     })
 
     return array;
 }
+
+array_1 = [1, 2, [[3, 4], [5, [6]]], [7, 8]]
+console.log(flatten(array_1)); 
 
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
