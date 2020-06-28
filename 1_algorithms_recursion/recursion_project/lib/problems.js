@@ -130,13 +130,12 @@ function flatten(data) {
 
     if (!Array.isArray(data)) return [data];
 
-    data.forEach(item => {
+    data.forEach((item, i) => {
         array.push(...flatten(item)); // App Academy Solution
         // if (Array.isArray(item)) {
-        //     console.log('inside')
         //     flatten(item);
         // } else {
-        //     array.push(item); 
+        //     array.push(item);
         // }
     })
 
