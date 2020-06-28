@@ -30,6 +30,7 @@ lucasNumber(3);   // => 4
 lucasNumber(5);   // => 11
 lucasNumber(9);   // => 76
 
+
 // Write a function, sumArray(array), that takes in an array of numbers.
 // The function should return the total sum of the elements.
 // 
@@ -42,7 +43,9 @@ lucasNumber(9);   // => 76
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
 function sumArray(array) {
+ if (array.length < 1) return 0;
 
+ return array[0] + sumArray(array.slice(1))
 }
 
 
