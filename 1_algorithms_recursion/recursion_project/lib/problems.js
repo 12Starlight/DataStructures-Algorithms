@@ -131,12 +131,13 @@ function flatten(data) {
     if (!Array.isArray(data)) return [data];
 
     data.forEach((item, i) => {
-        array.push(...flatten(item)); // App Academy Solution
-        // if (Array.isArray(item)) {
-        //     flatten(item);
-        // } else {
-        //     array.push(item);
-        // }
+        // array.push(...flatten(item)); // App Academy Solution
+        if (Array.isArray(item)) {
+            const result = flatten(item);
+            result.forEach(x => array.push(x));
+        } else {
+            array.push(item);
+        }
     })
 
     return array;
@@ -258,9 +259,11 @@ console.log(pathFinder(desktop, 'trixie_lou.jpeg'));
 module.exports = {
     lucasNumber,
     sumArray,
-    reverseString,
+    reverseString, 
     pow,
     flatten,
     fileFinder,
     pathFinder
 };
+
+
