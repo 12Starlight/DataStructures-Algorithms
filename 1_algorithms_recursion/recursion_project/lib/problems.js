@@ -134,10 +134,10 @@ function flatten(data) {
         // array.push(...flatten(item)); // App Academy Solution
         if (Array.isArray(item)) {
             const result = flatten(item);
-            result.forEach(x => array.push(x));
+            result.forEach(x => array.push(x)); // Remember that I must then again loop through the new array and push each item into the old array
         } else {
             array.push(item);
-        }
+        }f
     })
 
     return array;
