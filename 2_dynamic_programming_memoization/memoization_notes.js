@@ -53,3 +53,38 @@ console.log(memoFactorial(5));  // 120, requires 1 call
 console.log(memoFactorial(7));  // 5040, requires 2 calls
 
 console.log(memo); // {'2': 2, '3': 6, '4': 24, '5': 120, '6': 720, '7': 5040}
+
+
+const fib = (n) => {
+  if (n === 1 || n == 2) return 1;
+  return fib(n - 1) + fib(n - 2);
+}
+
+console.log(fib(6));    // 8
+// console.log(fib(50));   // very slow
+
+// Memoized
+const memoFib = (n, memo = {}) => {
+  if (n in memo) return memo[n];
+  if (n === 1 || n === 2 ) return 1;
+
+  memo[n] = memoFib(n - 1, memo) + memoFib(n - 2, memo);
+  return memo[n];
+}
+
+console.log(memoFib(6));    // 8
+console.log(memoFib(50));   // 12586269025
+
+
+/*
+The Memoization Formula
+  1.) Write an unoptimized, brute force recursion and make sure it works.
+  2.) Add the memo object as an additional arg to the function. The keys will
+  represent unique arguments to the function, and their values will represent
+  the results for those arguments.
+  3.) Add a base case condition to the function that returns the stored value,
+  if the function arg is in the memo.
+  4.) Before you return the result of the recursive case, store it in the memo
+  as a value and make the function's arg it's key.
+
+*/
