@@ -18,6 +18,6 @@ const change = (amount, coins, memo = {}) => {
 };
 
 
-module.exports {
-  change
-}
+// module.exports {
+//   change
+// }
