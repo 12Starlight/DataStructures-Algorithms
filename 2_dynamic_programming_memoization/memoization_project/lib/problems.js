@@ -26,7 +26,7 @@ function lucasNumberMemo(n, memo = {}) {
 
 
 // Write a function, minChange(coins, amount), that accepts an array of coin values
-// and a target amount as arguments. The method should the minimum number of coins needed
+// and a target amount as arguments. The method should determine the minimum number of coins needed
 // to make the target amount. A coin value can be used multiple times.
 //
 // After you pass the first 3 examples, you'll likely need to memoize your code 
@@ -39,11 +39,22 @@ function lucasNumberMemo(n, memo = {}) {
 // minChange([1, 5, 10, 25], 15)    // => 2, because 10 + 5 = 15
 // minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
 function minChange(coins, amount, memo = {}) {
+    if (amount === 0) return 0;
+    if (amount in memo) return memo[amount];
 
+    let numCoins = [];
+    coins.forEach(coin => {
+        if (coin <= amount) {
+            numCoins.push(minChange(coins, amount - coin, memo) + 1 );
+        }
+    })
+
+    memo[amount] = Math.min(...numCoins);
+    return memo[amount];
 }
 
 
 module.exports = {
     lucasNumberMemo,
     minChange
-};
+}; 
