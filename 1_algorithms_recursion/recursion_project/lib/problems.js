@@ -32,7 +32,7 @@ lucasNumber(9);   // => 76
 
 
 // Write a function, sumArray(array), that takes in an array of numbers.
-// The function should return the total sum of the elements.
+// The function should return the total sum of the elements. 
 // 
 // Solve this recursively!
 //

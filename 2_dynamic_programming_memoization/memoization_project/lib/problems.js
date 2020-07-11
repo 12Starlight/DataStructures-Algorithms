@@ -45,7 +45,7 @@ const minChangeBrute = (coins, amount) => {
     let numCoins = [];
     coins.forEach((coin) => {
         if (coin <= amount) {
-            numCoins.push(minChangeBrute(coins, amount - coin) + 1);
+            numCoins.push(minChangeBrute(coins, amount - coin) +1);
         }
     });
 
@@ -55,7 +55,30 @@ const minChangeBrute = (coins, amount) => {
 
 console.log(minChangeBrute([1, 2, 5], 11));
 
+// Explained
+let ultimate = [];
+const minChangeBruteExplained = (coins, amount) => {
+    if (amount === 0) return 0;
 
+    let numCoins = [];
+    coins.forEach((coin) => {
+        if (coin <= amount) {
+            numCoins.push(minChangeBruteExplained(coins, amount - coin) + 1); // +1 represents depth to get to 0
+        };
+    });
+
+    let res = Math.min(...numCoins);
+    console.log(`It takes ${res} coins to make ${amount} cents worth of change`);
+
+    ultimate.push(numCoins);
+    return res; 
+}
+
+console.log(minChangeBruteExplained([1, 4, 5], 8));
+console.log(ultimate);
+
+
+// Memoized
 const minChange = (coins, amount, memo = {}) => {
     if (amount === 0) return 0;
     if (amount in memo) return memo[amount];
@@ -73,7 +96,7 @@ const minChange = (coins, amount, memo = {}) => {
 
 
 module.exports = {
-    lucasNumberMemo,   
+    lucasNumberMemo,     
     minChangeBrute,
     minChange
 }; 
