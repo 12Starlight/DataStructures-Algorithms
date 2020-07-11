@@ -63,7 +63,8 @@ const minChangeBruteExplained = (coins, amount) => {
     let numCoins = [];
     coins.forEach((coin) => {
         if (coin <= amount) {
-            numCoins.push(minChangeBruteExplained(coins, amount - coin) + 1); // +1 represents depth to get to 0
+            // +1 represents depth to get to 0
+            numCoins.push(minChangeBruteExplained(coins, amount - coin) + 1); 
         };
     });
 
@@ -76,6 +77,70 @@ const minChangeBruteExplained = (coins, amount) => {
 
 console.log(minChangeBruteExplained([1, 4, 5], 8));
 console.log(ultimate);
+
+/* 
+When we first invoke our top-level function, there are three possible routes to 
+take. We either use a 1-cent coin, a 4-cent coin, or a 5-cent coin. We don't 
+know which of these options will result in the smallest number of total coins. 
+So we try them all. Let's say that minChangeBrute(coins, 7) returns 3; we add 1 
+because we now know it would take 4 total coins to make 8 cents. The result of 
+each recursive call is stored in 'numCoins' and we choose the option with the 
+fewest total coins.
+
+If minChangeBrute(coins, 7) returns 3, then the number 4 is being stored in 
+'numCoins'. This means that the solution we found requires 4 total coins. The 
+array numCoins is just an array of numbers. 
+
+The array is unique to each function call. It does not persist between recursive 
+calls. We are interested in the best solution, not the number of solutions, which 
+is why we only look for the smallest number in the array. Each number represents 
+one potential solution, where the number itself is the number of coins in that 
+solution.
+
+//     minChangeBrute(coins, 7) -> Coin 1 - first recursive call
+//     .   minChangeBrute(coins, 6) -> not solved
+//     .   .    minChangeBrute(coins, 5) -> not solved
+//     .   .    .    minChangeBrute(coins, 4) -> not solved
+//     .   .    .    .    minChangeBrute(coins, 3) -> not solved
+//     .   .    .    .    .    minChangeBrute(coins, 2) -> not solved
+//     .   .    .    .    .        minChangeBrute(coins, 1) -> solved - numCoins = [1]
+//     .   .    .    .    .            minChangeBrute(coins, 0) -> base case 
+//     .   .    .    .    minChangeBrute(coins, 0) 
+//     .   .    .    minChangeBrute(coins, 1)
+//     .   .    .    .    minChangeBrute(coins, 0)
+//     .   .    .    minChangeBrute(coins, 0)
+//     .   .    minChangeBrute(coins, 2)
+//     .   .    .    minChangeBrute(coins, 1)
+//     .   .    .        minChangeBrute(coins, 0)
+//     .   .    minChangeBrute(coins,1)
+//     .   .        minChangeBrute(coins, 0)
+//     .   minChangeBrute(coins, 3)
+//     .   .    minChangeBrute(coins, 2)
+//     .   .        minChangeBrute(coins, 1)
+//     .   .            minChangeBrute(coins, 0)
+//     .   minChangeBrute(coins, 2)
+//     .       minChangeBrute(coins, 1)
+//     .           minChangeBrute(coins, 0)
+//     minChangeBrute(coins, 4)
+//     .   minChangeBrute(coins, 3)
+//     .       minChangeBrute(coins, 2)
+//     .           minChangeBrute(coins, 1)
+//     .               minChangeBrute(coins, 0)
+//     .   minChangeBrute(coins, 0)
+//     minChangeBrute(coins, 3)
+//        minChangeBrute(coins, 2)
+//          minChangeBrute(coins, 1)
+//              minChangeBrute(coins, 0)
+
+Each recursive call will calculate the minimum # of coins to make the specified 
+amount of change. Technically, each function call finds every single combination 
+of coins that equals the specified total, and then returns the minimum 
+(see line 20)
+
+There are only seven unique subproblems, though - 7, 6, 5, 4, 3, 2, 1 - which is 
+where memoization can be useful
+
+*/
 
 
 // Memoized
@@ -98,5 +163,6 @@ const minChange = (coins, amount, memo = {}) => {
 module.exports = {
     lucasNumberMemo,     
     minChangeBrute,
+    minChangeBruteExplained,
     minChange
 }; 
