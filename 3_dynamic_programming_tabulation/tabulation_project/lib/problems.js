@@ -26,8 +26,19 @@ stepper([2, 3, 1, 1, 0, 4, 7, 8])    // => false, there is no way to step to the
 
 const stepper = (nums) => {
     let table = new Array(nums.length + 1).fill(false);
+    table[0] = true;
 
+    for (let i = 0; i < table.length; i++) {
+        if (table[i] === false) continue;
 
+        for (let j = i + 1; j < table.length; j++) {
+            if (j === table.length - 1) {
+                return true;
+            } 
+        }
+    }
+
+    return table[table.length - 1];
 }
 
 
