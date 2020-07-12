@@ -158,7 +158,22 @@ minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
 
 // Tabulation:
 const minChange = (coins, amount) => {
+    // We want to match indicies 
+    let table = new Array(amount + 1).fill(Infinity);
+    table[0] = 0;
 
+    coins.forEach(val => {
+        for (let amt = 0; amt < table.length; amt++) {
+            for (let qty = 0; qty * val <= amt; qty++) {
+                let remainder = amt - qty * val;
+                let attempt = table[remainder] + qty;
+
+                if (attempt < table[amt]) table[amt] = attempt;
+            }
+        }
+    });
+
+    return table[table.length - 1];
 };
 
 
