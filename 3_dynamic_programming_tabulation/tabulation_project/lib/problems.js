@@ -99,7 +99,17 @@ maxNonAdjacentSum([4,2,1,6])         // => 10, because 4 + 6
 
 // Tabulation:
 const maxNonAdjacentSum = (nums) => {
+    let table = new Array(nums.length).fill(0);
+    table[0] = nums[0];
 
+    for (let i = 0; i < table.length; i++) {
+        let skipLeftNeighnor = table[i - 2];
+        let includeThisNum = skipLeftNeighnor + nums[i];
+        let notIncludeThisNum = table[i - 1];
+        table[i] = Math.max(includeThisNum, notIncludeThisNum); 
+    }
+
+    return table[table.length - 1];
 };
 
 // Brute Force Recursion:
