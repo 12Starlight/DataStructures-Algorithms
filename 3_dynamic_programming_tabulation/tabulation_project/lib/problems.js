@@ -65,19 +65,20 @@ stepper([2, 3, 1, 1, 0, 4, 7, 8])    // => false, there is no way to step to the
 
 // Memoized:
 const stepper = (nums, memo = {}) => {
-    let key = String(nums);
-    if (key in memo) return memo[key];
+    // let key = String(nums);
+    // console.log(key);
+    if (nums.length in memo) return memo[nums.length];
     if (nums.length === 0) return true;
 
     let maxRange = nums[0];
     for (let step = 1; step <= maxRange; step++) {
         if (stepper(nums.slice(step), memo)) {
-            memo[key] = true;
+            memo[nums.length] = true;
             return true;
         }
     }
 
-    memo[key] = false;
+    memo[nums.length] = false;
     return false; 
 };
 
