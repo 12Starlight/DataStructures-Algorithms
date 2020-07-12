@@ -98,23 +98,35 @@ maxNonAdjacentSum([4,2,1,6])         // => 10, because 4 + 6
 */
 
 // Tabulation:
-const maxNonAdjacentSum = (nums) => {
-    if (nums.length === 0) return 0;
+// const maxNonAdjacentSum = (nums) => {
+//     if (nums.length === 0) return 0;
 
-    let table = new Array(nums.length).fill(0);
-    table[0] = nums[0];
+//     let table = new Array(nums.length).fill(0);
+//     table[0] = nums[0];
 
-    for (let i = 1; i < table.length; i++) {
-        let skipLeftNeighnor = table[i - 2] === undefined ? 0 : table[i - 2];
-        let includeThisNum = skipLeftNeighnor + nums[i];
-        let notIncludeThisNum = table[i - 1];
-        table[i] = Math.max(includeThisNum, notIncludeThisNum); 
-    }
+//     for (let i = 1; i < table.length; i++) {
+//         let skipLeftNeighnor = table[i - 2] === undefined ? 0 : table[i - 2];
+//         let includeThisNum = skipLeftNeighnor + nums[i];
+//         let notIncludeThisNum = table[i - 1];
+//         table[i] = Math.max(includeThisNum, notIncludeThisNum); 
+//     }
 
-    return table[table.length - 1];
-};
+//     return table[table.length - 1];
+// };
 
 // Brute Force Recursion:
+// const maxNonAdjacentSum = (nums) => {
+//     if (nums.length === 0) return 0;
+
+//     let firstEle = nums[0];
+
+//     return Math.max(
+//         firstEle + maxNonAdjacentSum(nums.slice(2)), 
+//         maxNonAdjacentSum(nums.slice(1))
+//     );
+// }
+
+
 // Memoized:
 
 
