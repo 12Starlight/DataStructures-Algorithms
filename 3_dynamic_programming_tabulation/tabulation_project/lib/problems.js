@@ -1,13 +1,22 @@
-/* 
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable prefer-const */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
+
+/*
 Write a function, stepper(nums), that takes in an array of non negative numbers.
 Each element of the array represents the maximum number of steps you can take from that position in the array.
-The function should return a boolean indicating if it is possible to travel from the 
+The function should return a boolean indicating if it is possible to travel from the
 first position of the array to the last position.
 
 For Example:
 
 Given [3, 1, 0, 5, 10]
-    - We begin at first position, 3. 
+    - We begin at first position, 3.
     - Since the element is 3 we can take up to 3 steps from this position.
     - This means we can step to the 1, 0, or 5
     - Say we step to 1
@@ -24,25 +33,56 @@ stepper([2, 3, 1, 1, 0, 4, 7, 8])    // => false, there is no way to step to the
 
 */
 
-const stepper = (nums) => {
-    let table = new Array(nums.length + 1).fill(false);
-    table[0] = true;
+// Tabulation:
+// const stepper = (nums) => {
+// 	// number arrays do NOT need to account for an extra space, ""
+// 	const table = new Array(nums.length).fill(false);
+// 	table[0] = true;
 
-    for (let i = 0; i < table.length; i++) {
-        if (table[i] === false) continue;
+// 	for (let i = 0; i < table.length; i++) {
+// 		if (table[i] === true) {
+// 			const maxRange = nums[i];
+// 			for (let j = 1; j <= maxRange; j++) {
+// 				table[i + j] = true;
+// 			}
+// 		}
+// 	}
 
-        for (let j = i + 1; j < table.length; j++) {
-            if (j === table.length - 1) {
-                return true;
-            } 
+// 	return table[table.length - 1];
+// };
+
+// Brute Force Recursion:
+// const stepper = (nums) => {
+//     if (nums.length === 0) return true;
+      
+//     let maxRange = nums[0];
+// 	for (let step = 1; step < maxRange; step++) {
+// 		if (stepper(nums.slice(step))) return true;
+// 	}
+
+// 	return false;
+// };
+
+// Memoized:
+const stepper = (nums, memo = {}) => {
+    let key = String(nums);
+    if (key in memo) return memo[key];
+    if (nums.length === 0) return true;
+
+    let maxRange = nums[0];
+    for (let step = 1; step <= maxRange; step++) {
+        if (stepper(nums.slice(step), memo)) {
+            memo[key] = true;
+            return true;
         }
     }
 
-    return table[table.length - 1];
-}
+    memo[key] = false;
+    return false; 
+};
 
 
-/* 
+/*
 Write a function, maxNonAdjacentSum(nums), that takes in an array of nonnegative numbers.
 The function should return the maximum sum of elements in the array we can get if we cannot take
 adjacent elements into the sum.
@@ -52,16 +92,17 @@ Try to solve this in two ways, using tabulation and memoization.
 Examples:
 
 maxNonAdjacentSum([2, 7, 9, 3, 4])   // => 15, because 2 + 9 + 4
-maxNonAdjacentSum([4,2,1,6])         // => 10, because 4 + 6 
+maxNonAdjacentSum([4,2,1,6])         // => 10, because 4 + 6
 
 */
 
+// Tabulation:
 const maxNonAdjacentSum = (nums) => {
 
-}
+};
 
 
-/* 
+/*
 Write a function, minChange(coins, amount), that accepts an array of coin values
 and a target amount as arguments. The method should the minimum number of coins needed
 to make the target amount. A coin value can be used multiple times.
@@ -75,13 +116,14 @@ minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
 
 */
 
+// Tabulation:
 const minChange = (coins, amount) => {
 
-}
+};
 
 
 module.exports = {
 	stepper,
 	maxNonAdjacentSum,
-	minChange
+	minChange,
 };
