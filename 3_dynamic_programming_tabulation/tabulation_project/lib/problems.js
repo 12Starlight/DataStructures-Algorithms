@@ -126,8 +126,20 @@ maxNonAdjacentSum([4,2,1,6])         // => 10, because 4 + 6
 //     );
 // }
 
-
 // Memoized:
+const maxNonAdjacentSum = (nums, memo = {}) => {
+    if (nums.length in memo) return memo[nums.length];
+    if (nums.length === 0) return 0;
+
+    let firstEle = nums[0];
+
+    memo[nums.length] = Math.max(
+        firstEle + maxNonAdjacentSum(nums.slice(2), memo),
+        maxNonAdjacentSum(nums.slice(1), memo)
+    );
+
+    return memo[nums.length];
+}
 
 
 /*
