@@ -43,3 +43,12 @@ The Math:
   -> Special case where 'num === 0' is due to log10(0) = -Infinity
 
 */
+
+
+const getMaxDigits = (nums) => {
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, getIntLength(nums[i]));
+  }
+  return maxDigits;
+}
