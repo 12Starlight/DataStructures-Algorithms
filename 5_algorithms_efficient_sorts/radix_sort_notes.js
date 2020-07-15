@@ -128,3 +128,26 @@ Time Complexity:
   talking point in an interview setting!
 
 */
+
+/*
+Space Complexity:
+    Radix Sort is an O(n + k) space algorithm. 
+
+    The amount of memory consumed by the algorithm increases relative to both 
+    the size of the input array and the length of the longest integer.
+
+*/
+
+/*
+When Should We Use Radix Sort?
+  -> To sort a list of any sort of binary data, including numeric, text, or 
+  image data in binary format
+  -> To sort a list of integers, and you do not know the value of the largest
+  element in the list
+    * If you do know the largest element in the list, see 'countingSort'!
+
+Radix Sort's run time, O(n * k), is dependent on the length (number of digits)
+of the largest integer in the input, 'k'. For this reason, it is fastest when
+'k' is relatively small. 
+
+*/
