@@ -58,6 +58,33 @@ Time Complexity:
 
 /*
 Space Complexity
-  The trade off for Counting Sort comes with its space complexity.
+  The trade off for Counting Sort comes with its space complexity. The smaller 
+  the range of integers that can possibly occur in our input array, the more
+  memory efficient Counting Sort will be. The larger 'k' is, the larger the 
+  number of elements we will have to allocate in our counter array. Thus, the 
+  space complexity of Counting Sort is O(k).
+
+NOTE: In an interview setting, always ask the interviewer, if you can be 
+guaranteed that the largest element in the input array is not huge.
+
+If asked why, mention that you may choose to use the Counting Sort algorithm to
+achieve a linear sort, but are considering the memory-cost trade offs involved.
+According to the ECMA-262 5th edition spec, due to 32-bit numbers, the 
+upper-bound length of a JavaScript array is 2^32 -1, which is 4,294,967,295. If
+the largest possible integer in your array is larger than this, you will have to
+optimize the Counting Sort algorithm to use less total memory, if you intend to
+use it. 
+
+*/
+
+/*
+When Should We Use Counting Sort?
+  -> Sort a list of integer data, and you DO know the value of the largest 
+  element in the list
+    * If you do NOT know the largest element in the list, see 'RadixSort'!
+
+Counting Sort's run time, O(n + k), is dependent on the size of the largest 
+integer in the input, 'k'. For this reason, it is fastest when 'k' is relatively
+small.
 
 */
