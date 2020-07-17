@@ -130,8 +130,8 @@ Time Complexity: O(log(n))
 Space Complexity: O(n)
   Our implementation uses 'n' space due to half arrays we create using slice.
   Note that JavaScript 'slice' creates a new array, so it requires additional 
-  memory to be allocated.
-
+  memory to be allocated.   
+  
 */
 
 /*
