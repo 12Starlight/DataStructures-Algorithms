@@ -165,3 +165,50 @@ Time Complexity - Access and Search
     Time' operations. 
 
 */
+
+/*
+Time Complexity - Insertion and Deletion
+
+  Scenarios:
+    1.) We have an empty Linked List, and we would like to insert our first node
+    2.) We have a Linked List, and we would like to insert or delete a node at
+    the Head or Tail
+    3.) We have a Linked List, and we would like to insert or delete a node from
+    somewhere in the middle of the list
+
+  Discussion:
+    Since we have our Linked List Nodes stored in a non-contiguous manner that
+    relys on pointers to keep track of where the next and previous nodes live,
+    Linked Lists liberate us from the linear time nature of Array insertions and 
+    deletions. We no longer have to adjust the position at which each 
+    node/element is stored after making an insertion at a particular position in
+    the list. Instead, if we want to insert a new node at position 'i', we can
+    simply:
+      a.) Create a new node
+      b.) Set the new node's 'next' and 'previous' pointers to the nodes that 
+      live at positions 'i' and 'i - 1', respectively
+      c.) Adjust the 'next' pointer of the node that lives at position 'i - 1'
+      to point to the new node
+      d.) Adjust the 'previous' pointer of the node that lives at position 'i'
+      to point to the new node.
+
+    And we are done, in Constant Time. No iterating across the entire list!
+
+    "But hold on a second," you may be thinking. "In order to insert a new node
+    in the middle of the list, do we not have to lookup its position? Does that
+    not take linear time?!"
+
+    Yes, it is tempting to call insertion or deletion in the middle of a Linked
+    List a linear time operation since there is lookup involved. However, it is
+    usually the case that you will already have a reference to the node where 
+    your desired insertion or deletion will occur.
+    
+    For this reason, we separate the Access time complexity from the
+    Insertion/Deletion time complexity, and formally state that Insertion and
+    Deletion in a Linked List are 'Constant Time' across the board.
+
+    NOTE: Without a refrence to the node at which an insertion or deletion will
+    occur, due to linear time lookup, an insertion or deletion 'in the middle'
+    of a Linked List will still take Linear Time, sum total. 
+
+*/
