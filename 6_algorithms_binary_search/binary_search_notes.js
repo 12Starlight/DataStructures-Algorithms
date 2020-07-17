@@ -112,3 +112,31 @@ const binarySearch = (array, target) {
     return true;
   }
 }
+
+/*
+Time Complexity: O(log(n))
+  -> 'n' is the length of the input array
+  -> We have no loops, so we must only consider the number of recursive calls it
+  takes to hit the base case
+  -> The number of recursive calls is the number of times we must halve the 
+  array until it's length becomes 0. This number can be described by 'log(n)'
+    * For example, say we had an array of 8 elements, 'n = 8'
+    * The length would halve as '8->4->2->1'
+    * It takes 3 calls, 'log(8) = 3'
+
+*/
+
+/*
+Space Complexity: O(n)
+  Our implementation uses 'n' space due to half arrays we create using slice.
+  Note that JavaScript 'slice' creates a new array, so it requires additional 
+  memory to be allocated.
+
+*/
+
+/*
+When Should We Use Binary Search?
+  Use this algorithm when the input data is sorted!!! This is a heavy 
+  requirement, but if you have it, you will have an insanely fast algorithm.
+
+*/
