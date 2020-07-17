@@ -124,3 +124,44 @@ Meta -> 'size' - Returns the current size of the Linked List
       returns -> Integer 
 
 */
+
+/*
+Time & Space Complexity Analysis:
+  Before we begin our analysis, here is a quick summary of the Time & Space 
+  constraints of each Linked List Operation. The complexities below apply to
+  both Singly and Doubly Linked Lists:
+  
+Data Structure Operation      Avg       Worst       Space(Worst)  
+
+Access                        O(n)      O(n)        O(n)    
+Search                        O(n)      O(n)        O(n)    
+
+Insertion                     O(1)      O(1)        O(n)
+Deletion                      O(1)      O(1)        O(n)
+
+*/
+
+/*
+Time Complexity - Access and Search
+  
+  Scenarios:
+    1.) We have a Linked List, and we would like to find the 8th item in the list
+    2.) We have a Linked List of sorted alphabet letters, and we would like to 
+    see, if the letter 'Q' is inside that list
+
+  Discussion:
+    Unlike Arrays, Linked Lists Nodes are not stored contiguously in memory, and
+    thereby do not have an indexed set of memory addresses at which we can
+    quickly lookup individual nodes in constant time. Instead, we must begin at
+    the head of the list (or possibly at the tail, we have a Doubly Linked List),
+    and iterate through the list until we arrive at the node of interest. 
+
+    In Scenario 1, we will know we are there bc we have iterated 8 times. In 
+    Scenario 2, we will know we are there bc, while iterating, we have checked
+    each node's value and found one that matches our target value, 'Q'.
+
+    In the worst case scenario, we may have to traverse the entire Linked List
+    until we arrive at the final node. This makes both Access and Search 'Linear
+    Time' operations. 
+
+*/
