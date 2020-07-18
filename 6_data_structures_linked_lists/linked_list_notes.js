@@ -212,3 +212,34 @@ Time Complexity - Insertion and Deletion
     of a Linked List will still take Linear Time, sum total. 
 
 */
+
+/*
+Space Complexity:
+  Scenarios:
+    1.) We are given a Linked List, and need to operate on it
+    2.) We have decided to create a new Linked List as part of strategy to solve
+    some problem
+
+  Discussion:
+    It is obvious that Linked List have one node for every one item in the list,
+    and for that reason we know that Linked Lists take up Linear Space in memory.
+    However, when asked in an interview setting what the Space Complexity 'of 
+    your solution' to a problem is, it is important to recoginize the difference
+    between the two scenarios above.
+
+    In Scenario 1, 'we are not' creating a new Linked List. We simply need to
+    operate on the one given. Since we are not storing a 'new' node for every
+    node represented in the Linked List we are provided, our solution is 'not
+    necessarily' linear in space.
+
+    IN Scenario 2, we 'are' creating a new Linked List. If the number of nodes
+    we create is linearly correlated to the size of our input data, we are now
+    operating in Linear Space.
+
+    NOTE: Linked Lists can be traversed both iteratively and recursively. 'If
+    you choose to traverse a Linked List recursively,' there will be a recursive
+    function call added to the call stack for every node in the Linked List. 
+    Even if you are provided the Linked List, as in Scenario 1, you will still
+    use Linear Space in the call stack, and that counts. 
+
+*/
