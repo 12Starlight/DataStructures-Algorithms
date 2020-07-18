@@ -63,5 +63,41 @@ What Is A Queue?
   adds to the back (enqueue) and 'Array#shift' will remove from the front 
   (dequeue). In the exercise that follows, we will build our own Queue class
   from scratch (without using any arrays). 
-  
+
+*/
+
+/*
+Stack & Queue Properties:
+
+Stack                                      
+Property  Description 
+
+top       The first node in the Stack                                      
+bottom    The last node in the Stack                                      
+length    The number of nodes in the Stack; the stack's length 
+
+
+Queue 
+Property  Description
+
+front     The first node in the Queue
+back      The last node in the Queue
+length    The number of nodes in the Queue; the Queue's length
+
+
+Notice that rather than having a 'head' and a 'tail' like Linked Lists, Stacks
+have a 'top' and a 'bottom', and Queues have a 'front' and a 'back' instead.
+These properties are essentially the same; pointers to the end points of the 
+respective List ADT where important actions take place. 
+
+Similarly to Linked Lists, the values stored inside a Stack or a Queue are
+actually contained within Stack Node and Queue Node instances. Stack, Queue, and
+Singly Linked List Nodes are all identical, but just as a reminder and for the 
+sake of completion, these List Nodes track the following two properties:
+
+Property    Description
+
+value       The actual value this node represents
+next        The next node in the Stack (relative to this node)
+
 */
