@@ -38,5 +38,30 @@ What Is A Stack?
   adds to the top of the stack and 'Array#pop' will remove from the top of the
   stack. In an interview setting, your evaluator might be okay with you using an
   array as a stack.
+
+*/
+
+/*
+What Is A Queue?
+  Queues are First In First Out (FIFO) data structure. The first Node added to
+  the queue is always the first Node to be removed.
+
+  The name Queue comes from this characteristic, as it is helpful to visualize
+  this data structure as a horizontal line of items with a beginning and an end.
+  Personally, I like to think of a Queue as the line one waits on for an
+  amusement park, at a grocery store checkout, or to see the teller at a bank.
+
+  People add themselves to the BACK of a queue, wait their turn in line, and
+  make their toward the FRONT. Peoplee exit from the FRONT of a queue, but only
+  when they have made their wat to being first in line.
+
+  We never add ourselves to the front of the queue (unless there is no one else
+  in line), otherwize we would be "cutting" the line, and other humans do not
+  seem to appreciate that.
+
+  Note: We can use JavaScript Arrays to implement a basic queue. 'Array#push'
+  adds to the back (enqueue) and 'Array#shift' will remove from the front 
+  (dequeue). In the exercise that follows, we will build our own Queue class
+  from scratch (without using any arrays). 
   
 */
