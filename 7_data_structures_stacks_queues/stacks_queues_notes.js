@@ -103,7 +103,7 @@ next        The next node in the Stack (relative to this node)
 */
 
 /*
-Stack Methods
+Stack Methods:
   Insertion ~ push - Adds a Node to the top of the Stack
     returns Integer - New size of stack
 
@@ -160,5 +160,68 @@ class Stack {
 
   size() {
     return this.length; 
+  }
+}
+
+
+/*
+Queue Methods:
+  Insertion ~ enqueue - Adds a Node to the front of the Queue
+    returns Integer - New size of Queue
+
+  Deletion ~ dequeue - Removes a Node from the front of the Queue
+    returns Node removed from front of Queue
+
+  Meta ~ size - Returns the current size of the Queue
+    returns Integer
+
+*/
+
+// Queue JavaScript Implementation
+class Node {
+  constructor(val) {
+    this.value = val;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.front = null;
+    this.back = null;
+    this.length = 0;
+  }
+
+  enqueue(val) {
+    const newNode = new Node(val);
+
+    if (!this.front) {
+      this.front = newNode;
+      this.back = newNode;
+    } else {
+      this.back.next = newNode;
+      this.back = newNode;
+    }
+
+    return ++this.length;
+  }
+
+  dequeue() {
+    if (!this.front) return null;
+
+    const temp = this.front;
+
+    if (this.front === this.back) {
+      this.back = null;
+    }
+
+    this.front = this.front.next;
+    this.length--;
+
+    return temp.value;
+  }
+
+  size() {
+    return this.length;
   }
 }
