@@ -225,3 +225,53 @@ class Queue {
     return this.length;
   }
 }
+
+/*
+Time & Space Complexity Analysis:
+  Before we begin our analysis, here is a quick summary of the Time & Space
+  constraints of each Stack Operation
+
+Data Structure Operation      Avg       Worst       Space(Worst)
+
+Access                        O(n)      O(n)        O(n)
+Search                        O(n)      O(n)        O(n)
+
+Insertion                     O(1)      O(1)        O(n)
+Deletion                      O(1)      O(1)        O(n)
+
+*/
+
+/*
+Time Complexity - Access and Search: O(n)
+  When the Stack ADT was first conceived, its inventor definitely did not 
+  prioritize searching and accessing individual Nodes or values in the list. The
+  same idea applies for the Queue ADT. There are certainly better data 
+  structures for speedy search and lookup, and if these operations are a 
+  priority for your use case, it would be best to choose something else!
+
+  Search and Access are both linear time operations for Stacks and Queues, and
+  that should not be too unclear. Both ADTs are nearly identical to Linked Lists
+  in this way. The only way to find a Node somewhere in the middle of a Stack or
+  a Queue, is to start at the 'top' (or the 'back') and traverse downward (or 
+  forward) toward the 'bottom' (or 'front') one node at a time via each Node's
+  'next' property.
+
+*/
+
+/*
+Time Complexity - Insertion and Deletion: O(1)
+  For Stacks and Queues, insertion and deletion is what it is all about. If
+  thee is one feature a Stack obsolutely must have, it is constant time 
+  insertion and removal to and from the 'top' of the Stack (FIFO). The same
+  applies for Queues, but with insertion occuring at the 'back' and removal 
+  occuring at the 'front' (LIFO).
+
+  Think about it. When you add a plate top the top of a stack of plates, do you
+  have to iterate through all of the other plates first to do so? Of course not.
+  You simply add your plate to the top of the stack, and that is that. The 
+  concept is the same for removal.
+
+  Therefore, Stacks and Queues have constant time Insertion and Deletion via
+  their 'push' and 'pop' or 'enqueue' and 'dequeue' methods.
+
+*/
