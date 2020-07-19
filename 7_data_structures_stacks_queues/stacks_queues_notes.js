@@ -275,3 +275,72 @@ Time Complexity - Insertion and Deletion: O(1)
   their 'push' and 'pop' or 'enqueue' and 'dequeue' methods.
 
 */
+
+/*
+Space Complexity: O(n)
+  The space complexity of Stacks and Queues is very simple. Whether we are 
+  instantiating a new instance of a Stack or Queue to store a set of data, or we
+  are using a Stack or Queue as part of a strategy to solve some problem, Stacks
+  and Queues always store one Node for each value they receive as input.
+
+  For this reason, we always consider Stacks and Queues to have a linear space
+  complexity.
+
+*/
+
+/*
+When Should We Use Stacks And Queues?
+  At this point, we have done a lot of work understanding the ins and outs of 
+  Stacks and Queues, but we still have not really discussed what we can use them 
+  for. The answer is actually...a lot!
+
+  For one, Stacks and Queues can be used as intermediate data structures while
+  implementing some of the more complicated data structures and methods we will
+  see in some of our upcomming sections.
+
+  For example, the implementation of the breadth-first Tree traversal algorithm
+  takes advantage of a Queue instance, and the depth-first Graph traversal
+  algorithm exploits the benefits of a Stack instance.
+
+  Additionaly, Stacks and Queues serve as the essential underlying data
+  structures to a wide variety of applications you use all the time. Just to
+  name a few:
+
+
+Stacks:
+    -> The Call Stack is a Stack data structure, and is used to manage the order
+    of function invocations in your code.
+    -> Browser History is often implemented using a Stack, with one great 
+    example being the browser history object in the very popular React Router
+    module.
+    -> Undo/Redo functionality in just about any application. For example:
+      * When you are coding in your text editor, each of the actions you take on
+      your keyboard are recorded by 'push'ing that event to a Stack.
+      * When you hit cmd + z to undo your most recent action, that event is
+      'pop'ed off the Stack, because the last event that occured should be the 
+      first one to be undone (LIFO)
+      * When you hit cmd + y to redo your most recent action, that event is 
+      'push'ed back onto the Stack.
+
+Queues:
+    -> Printers use a Queue to manage incomming jobs to ensure that documents
+    are printed in the order they are received.
+    -> Chat rooms, online video games, and customer service phone lines use a
+    Queue to ensure that patrons are served in the order they arrive.
+      * In the case of a Chat Room to be admitted to size-limited room.
+      * In the case of an Online Multi-Player Game, players wait in a lobby 
+      until there is enough space and it is their turn to be admitted to a game.
+      * In the case of a Customer Service Phone Line...you get the point.
+    
+    -> As a more advanced use case, Queues are often used as components or
+    services in the system design of a service-oriented architecture. A very
+    popular and easy to use example of this is Amazon's Simple Queue Service
+    (SQS), which is part of their Amazon Web Services (AWS) offering.
+      * You would add this service to your system between two other services,
+      one that is sending information for processing, and one that is receiving
+      information to be processed, when the volume of incoming requests is high
+      and the integrity of the order with which those requests are processed 
+      must be maintained. 
+
+
+*/
