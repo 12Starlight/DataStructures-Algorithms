@@ -88,7 +88,7 @@ length    The number of nodes in the Queue; the Queue's length
 Notice that rather than having a 'head' and a 'tail' like Linked Lists, Stacks
 have a 'top' and a 'bottom', and Queues have a 'front' and a 'back' instead.
 These properties are essentially the same; pointers to the end points of the 
-respective List ADT where important actions take place. 
+respective List ADT where important actions may take place. 
 
 Similarly to Linked Lists, the values stored inside a Stack or a Queue are
 actually contained within Stack Node and Queue Node instances. Stack, Queue, and
