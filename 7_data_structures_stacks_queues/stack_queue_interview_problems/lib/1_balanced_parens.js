@@ -75,8 +75,51 @@
 // -----------
 // Let's code!
 // -----------
-function balancedParens(str) {
+const balancedParens = (str) => {
+  /*
+  Here is an example of using a 'Poor Man's Stack' to manage limited-time 
+  interviews and get to the meat of the interview problem quickly.
 
+  We are relying on arrays and on the developer following the honor system here.
+  They must treat the array as if it is a Stack.
+
+  NEVER do this in an interview setting without confirming with the interviewer
+  that they know you are purposefully taking a shortcut to avoid boring them
+  with your Stack implementation.
+
+  You must look at your interviewer here, gauge their effect and the tonality of
+  their voice, and make sure they appreciate this as a gesture and that they
+  will not dock points for skipping something they originally wanted to test you
+  on.
+
+  Pulling this off is almost entirely a matter of how confidently you appear when
+  you do it. If you exude so much confidence that the interviewer feels that
+  implementing a proper OOP Stack class from scratch is a waste of everyone's
+  time in the room, then you win.
+  
+  */
+
+  const stack = [];
+  const pairs = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  };
+
+  for (let i = 0; i < str.length; i++) {
+    var char = str[i];
+
+    if (pairs[char]) {
+      stack.push(char);
+    } else if (char === '}' || char === ']' || char === ')') {
+      if (pairs[stack.pop()] !== char) {
+        return false;
+      }
+    }
+  }
+
+  // Return false, if there are any unclosed brackets remainng in the stack
+  return stack.length === 0;
 }
 
 exports.balancedParens = balancedParens;
