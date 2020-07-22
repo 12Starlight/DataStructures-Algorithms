@@ -141,6 +141,9 @@ tree2.insert(10);
 tree2.insert(16);
 tree2.insert(16);
 
+tree2.inOrderPrint();
+
+
 /*
 It is hard not to cringe at Tree2 bc it is just nodes and edges that lead to the
 right. Well, you should cringe. Although we ahve the same values in both trees,
