@@ -66,6 +66,14 @@ Naive BST Implementation:
 
 */
 
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 class BST {
     constructor() {
       // initialize the tree to be empty
@@ -98,6 +106,14 @@ class BST {
         }
     }
   }
+
+  inOrderPrint(root=this.root) {
+    if (!root) return;
+
+    this.inOrderPrint(root.left);
+    console.log(root.val);
+    this.inOrderPrint(root.right);
+  }
 }
 
 /*
@@ -113,6 +129,9 @@ tree1.insert(16);
 tree1.insert(1);
 tree1.insert(7);
 tree1.insert(16);
+
+tree1.inOrderPrint();
+
 
 let tree2 = new BST();
 tree2.insert(1);
