@@ -1,4 +1,4 @@
-function depthFirstSearch(root, targetVal) {
+const depthFirstSearch = (root, targetVal) => {
     let stack = [ root ];
 
     while (stack.length) {
