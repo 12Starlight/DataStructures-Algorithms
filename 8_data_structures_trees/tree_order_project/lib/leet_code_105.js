@@ -1,7 +1,13 @@
 // View the full problem and run the test cases at:
 //  https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
-const { TreeNode } = require('./tree_node.js');
+// const { TreeNode } = require('./tree_node.js');
+
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val);
+  this.left = (left === undefined ? null : left);
+  this.right = (right === undefined ? null : right);
+}
 
 
 const buildTree = (preorder, inorder) => {
@@ -26,6 +32,6 @@ const buildTree = (preorder, inorder) => {
   return root;
 };
 
-const preorder = [3,9,20,15,7];
-const inorder = [9,3,15,20,7];
+preorder = [3,9,20,15,7];
+inorder = [9,3,15,20,7];
 console.log(buildTree(preorder, inorder));
