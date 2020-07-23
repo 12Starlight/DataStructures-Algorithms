@@ -78,3 +78,5 @@ const noDuplicates = (arr) => {
 }
 
 console.log(noDuplicates(array));
+let arr = noDuplicates(array);
+console.log(arr[2]);
