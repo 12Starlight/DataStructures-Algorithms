@@ -110,6 +110,18 @@ class BST {
   }
 }
 
+let tree1 = new BST();
+tree1.insert(10);
+tree1.insert(5);
+tree1.insert(16);
+tree1.insert(1);
+tree1.insert(7);
+tree1.insert(16);
+
+console.log(tree1.search(10));
+console.log(tree1.search(7));
+console.log(tree1.search(14));
+tree1.inOrderPrint();
 
 /*
 Height Balance:
