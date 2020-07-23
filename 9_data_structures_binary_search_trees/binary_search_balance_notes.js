@@ -41,8 +41,47 @@ Implementing Binary Search On A BST:
 */
 
 // assuming our BST class from the previous section
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+
 class BST {
-  // ...
+  constructor() {
+    // initialize the tree to be empty
+    this.root = null;
+  }
+
+  insert(val, root = this.root) {
+    // if the tree is currently empty, then create the node as the 'absolute'
+    // root
+    if (!this.root) {
+      this.root = new TreeNode(val);
+      return;
+    }
+
+    // otherwise, the tree is not empty, so...
+    // if our val to insert is less than the root...
+    if (val < root.val) {
+      if (!root.left) {                 // ...and the left child does not exit,
+        root.left = new TreeNode(val);  //  then create the node as the left child
+      } else {                          // ...and the left child already exists,
+        this.insert(val, root.left);    //  then recursively insert on the left subtree
+      }
+
+      // if our val to insert is greater than or equal to the root...
+    } else {
+      if (!root.right) {                // ...and the right child does not exist,
+        root.right = new TreeNode(val); //   then create the node as the right child
+      } else {                          // ...and the right child already exists,
+        this.insert(val, root.right);   //   then recursively insert on the right subtree
+      }
+    }
+  }
 
   search(val, root=this.root) {
     // if the tree is empty, then the target val is not in the tree, so return false
@@ -60,6 +99,14 @@ class BST {
       // we found it!
       return true;
     }
+  }
+
+  inOrderPrint(root = this.root) {
+    if (!root) return;
+
+    this.inOrderPrint(root.left);
+    console.log(root.val);
+    this.inOrderPrint(root.right);
   }
 }
 
