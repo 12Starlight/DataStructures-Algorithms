@@ -7,9 +7,7 @@ const sortedArrayToBST = (nums) => {
 
   let midIdx = Math.floor(nums.length / 2);
   let root = new TreeNode(nums[midIdx]);
-  let leftSubtree = sortedArrayToBST(nums.slice(0, midIdx));
-  let rightSubtree = sortedArrayToBST(nums.slice(midIdx + 1));
-  root.left = leftSubtree;
-  root.right = rightSubtree;
+  root.left = sortedArrayToBST(nums.slice(0, midIdx));
+  root.right = sortedArrayToBST(nums.slice(midIdx + 1));
   return root;
 };
