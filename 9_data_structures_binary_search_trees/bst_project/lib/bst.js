@@ -33,16 +33,32 @@ class BST {
         }
     }
 
-    searchRec(val, root = this.root) {
+    searchRecur(val, root = this.root) {
         if (!root) return false;
 
         if (val < root.val) {
-            return this.searchRec(val, root.left);
+            return this.searchRecur(val, root.left);
         } else if (val > root.val) {
-            return this.searchRec(val, root.right);
+            return this.searchRecur(val, root.right);
         } else {
             return true;
         }
+    }
+
+    searchIter(val) {
+        let curr = this.root;
+
+        while (curr) {
+            if (val < curr.val) {
+                curr = curr.left;
+            } else if (val > curr.val) {
+                curr = curr.right;
+            } else {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     inOrderPrint(root = this.root) {
