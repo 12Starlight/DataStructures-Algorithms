@@ -129,3 +129,118 @@ const depthFirstIter = (node) => {
 }
 
 depthFirstIter(f);
+
+
+/*
+Graph Traversal w/ Adjacency List:
+  Let us now assume our candidate graph in the form of an Adjacency List:
+
+*/
+
+let graph = {
+  'a': ['b', 'c', 'e'],
+  'b': [],
+  'c': ['b', 'd'],
+  'd': [],
+  'e': ['a'],
+  'f': ['e']
+};
+
+/*
+  Bear in mind that the nodes are just strings now, not 'GraphNode's. Other than
+  that, the code shares many details from our previous implementations:
+
+*/
+
+// using Adjacency List representation
+const depthFirstRecur = (node, graph, visited = new Set()) {
+  if (visited.has(node)) return;
+
+  console.log(node);
+  visited.add(node);
+
+  graph[node].forEach(neighbor => {
+    depthFirstRec(neighbor, graph, visited);
+  });
+}
+
+depthFirstRec('f', graph);
+
+/*
+  Cool! We print values in the order 'f, e, a, b, c, d'. We will leave the
+  iterativ3e version to you as an exercise for later.
+
+  Instead, let us draw our attention to a point from before: having to choose 'f'
+  as the starting point is it not dynamic enough to be impressive. Also, if we
+  choose a poor initial node, some nodes may be unreachable. For example, choosing
+  'a' as the starting point with a call to 'depthFirstRecur('a', graph) will only
+  print 'a, b, c, d, e'. We missed out on 'f'. Bummer. 
+
+  We can fix this. A big advantage of using an Adjaceny List is that it contains
+  the full graph! We can use a surrounding loop to allow our traversal to jump
+  between disconnected regions of the graph. Refactoring our code:
+
+*/
+
+const _depthFirstRecur = (node, graph, visited) => {
+  if (visited.has(node)) return;
+
+  console.log(node);
+  visited.add(node);
+
+  graph[node].forEach(neighbor => {
+    _depthFirstRecur(neighbor, graph, visited);
+  });
+}
+
+const depthFirst = (graph) => {
+  let visited = new Set();
+
+  for (let node in graph) {
+    _depthFirstRecur(node, graph, visited);
+  }
+}
+
+depthFirst(graph);
+
+/*
+  Notice that our main function 'depthFirst' is iterative and accepts the entire
+  Adjacency List as an arg. Our helper '_depthFirstRecur' is recursive.
+  '_depthFirstRecur' serves the same job as before, it will explore a full
+  connected region in a graph. The main 'depthFirst' method will allow us to 
+  'bridge' the gap between connection regions.
+
+  Still fuzzy? Imagine we had the following graph. Before you ask, these are not
+  two separate graphs. This is a SINGLE graph that contains two connected
+  components. Another term for a graph of this structure is a 'Forest' bc it
+  contains multiple 'Trees', ha:
+
+  It is easy to represent the graph using an Adjaceny List. We can then pass the
+  graph into our 'depthFirst' from above:
+
+*/
+
+let graph = {
+  'h': ['i', 'j'],
+  'i': [],
+  'j': ['k'],
+  'k': [],
+  'l': ['m'],
+  'm': []
+}
+
+depthFirst(graph); // h, i, j, k, l, m
+
+/*
+  Here is the description for how 'depthFirst' operates above. We enter 
+  'depthFirst' and the for loop begins on 'h'. This means we enter our
+  '_depthFirstRecur', which will continue to explore the 'local' region as far
+  as possible. When this recursion ends, we would have explored the entire
+  connected region of 'h, i, j, k' (note that we add these nodes to visited as
+  well). Our recursive call then returns to the main 'depthFirst' function,
+  where we continue the for loop. We iterate it until we hit an unvisited node
+  ('1') and then explore it's local region as far as possible using
+  '_depthFirstRecur', hitting the last node 'm'.
+
+*/
+
