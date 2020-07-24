@@ -80,3 +80,52 @@ const noDuplicates = (arr) => {
 console.log(noDuplicates(array));
 let arr = noDuplicates(array);
 console.log(arr[2]);
+
+// using GraphNode representation
+const depthFirstRecur(node, visted = new Set()) {
+  // if this node as has already been visited, then return early
+  if (visted.has(node.val)) return;
+
+  // otherwise it has not yet been visited, so print it's val and mark it as
+  // visited
+  console.log(node.val);
+  visited.add(node.val);
+
+  // then explore each of its neighbors
+  node.neighbors.forEach(neighbor => {
+    depthFirstRecur(neighbor, visited);
+  });
+}
+
+depthFirstRecur(f);
+
+/*
+This code works well and will print the values in the order 'f, e, a, c, b, d'.
+Note that this strategy only works if the values are guarenteed to be unique.
+
+If you are averse to recursion (do not be), we can write an iterative version
+using the same principles:
+
+*/
+
+const depthFirstIter = (node) => {
+  let visited = new Set();
+  let stack = [ node ];
+
+  while (stack.length) {
+    let node = stack.pop();
+
+    // if this node has already been visited, then skip this node
+    if (visited.has(node.val)) continue;
+
+    // otherwise it has not yet been visited, so print it's val and mark it as
+    // visited
+    console.log(node.val);
+    visited.add(node.val);
+
+    // then add its neighbors to the stack to be explored
+    stack.push(...node.neighbors);
+  }
+}
+
+depthFirstIter(f);
