@@ -221,6 +221,10 @@ const minDistanceNode = (nodes, distance) => {
   ));
 }
 
+let un = new Set(['a', 'b', 'c']);
+let dist = { 'a': 5, 'b': 2, 'c': 3 };
+console.log(minDistanceNode(un, dist));
+
 const dijkstras = (graph, source) => {
   let distance = {};
   for (let node in graph) {
@@ -262,3 +266,31 @@ let { distance, previous } = dijkstras(graph, 'a');
 
 console.log(distance);
 console.log(previous);
+
+/*
+Time Complexity Analysis:
+  We implemented the same core algorithm that Dr. Edsger Wybe Dijkstra wrote
+  himself in 1956. This algorithm has a runtime of 'O(n^2)' where n is the
+  number of nodes in the graph. Here is the derivation for this complexity:
+    -> n is the number of nodes in the graph
+    -> The while loop will iterate once for every node, so in isolation it
+    contributes O(n) steps
+    -> The 'minDistanceNode' helper iterates through every unvisited node, so in
+    isolation it contributes O(n) steps
+    -> The helper call is nested in the while loop, so combined they contribute
+    'O(n^2)'
+    -> Over the course of the whole algorithm, the inner for loop will iterate
+    once for every edge of the graph. Thenumber of edges in a graph of n nodes
+    is guaranteed to be less than n^2. So this loop does not contribute to the
+    overall complexity.
+
+  Since it's orignal inception, computer scientists have figured out further ways
+  to optimize the algorithm by more efficiently calculating the node with the
+  minimum distance (our 'minDistanceNode function). Those implementations 
+  require more advanced data structures like Fibonacci Heaps to get 
+  O(e + nlog(n)) runtime where n is the number of nodes and e is the number of
+  edges. We will save that battle for another day, perhaps in the heaps section!
+
+
+
+*/
