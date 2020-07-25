@@ -22,7 +22,7 @@ let graph = {
   'f': { 'c': 4, 'e': 9 }
 };
 
-dijkstras(graph, 'a');
+// dijkstras(graph, 'a');
 
 
 /*
@@ -165,3 +165,100 @@ Implementing Dijkstra's:
 
 */
 
+/*
+  With the 'totalNeighborDistance' in hand, we can finish off the algorithm with
+  a min-finding pattern. That is, if 'totalNeighborDistance' is less than the
+  previous 'distance' we calculated for 'neighbor', we should replace it bc that
+  means 'totalNeighborDistance' is now the new best:
+
+  function dijkstras(graph, source) {
+    let distance = {};
+
+    for (let node in graph) {
+      distance[node] = Infinity;
+    }
+    distance[source] = 0
+
+    let unvisited = new Set(Object.keys(graph));
+    let previous = {};
+
+
+    while (unvisited.size > 0) {
+      let currNode = minDistanceNode(unvisited, distance);
+      unvisited.delete(currNode);
+
+      for (let neighbor in graph[currNode]) {
+        let distanceFromCurrToNeighbor = graph[currNode][neighbor];
+        let totalNeighborDistance = distance[currNode] + distanceFromCurrToNeighbor;
+
+        // if the total distance is better than the old distance we calculated for neighbor,
+        if (distance[neighbor] > totalNeighborDistance) {
+          // then replace it
+          distance[neighbor] > totalNeighborDistance;
+          // and now we say that the optimal path has 'currNode' followed by 'neighbor'
+          previous[neighbor] = currNode;
+        }
+      }
+    }
+
+    return { distance, previous };
+  }
+
+
+  We do this process untill all nodes are visited. The 'distance' and 'previous'
+  objects will be filled with information about the optimal paths in the graph:
+    -> 'distance' tells us the numerical distance of optimal paths from the 
+    source to any node
+    -> 'previous' tells us the order of nodes to travel, if we want to take an
+    optimal path from the source to any node
+
+*/
+
+// Full Dijkstra's Algorithm In JavaScript 
+const minDistanceNode = (nodes, distance) => {
+  return Array.from(nodes).reduce((minNode, node) => (
+    distance[node] < distance[minNode] ? node : minNode
+  ));
+}
+
+const dijkstras = (graph, source) => {
+  let distance = {};
+  for (let node in graph) {
+    distance[node] = Infinity;
+  }
+  distance[source] = 0;
+
+  let unvisited = new Set(Object.keys(graph));
+  let previous = {};
+
+  while (unvisited.size > 0) {
+    let currNode = minDistanceNode(unvisited, distance);
+    unvisited.delete(currNode);
+
+    for (let neighbor in graph[currNode]) {
+      let distanceFromCurrToNeighbor = graph[currNode][neighbor];
+      let totalNeighborDistance = distance[currNode] + distanceFromCurrToNeighbor;
+
+      if (distance[neighbor] > totalNeighborDistance) {
+        distance[neighbor] = totalNeighborDistance;
+        previous[neighbor] = currNode;
+      }
+    }
+  }
+
+  return { distance, previous };
+}
+
+graph = {
+  'a': { 'c': 1, 'b': 7 },
+  'b': { 'a': 7, 'd': 12, 'e': 13 },
+  'c': { 'a': 1, 'd': 20, 'f': 4 },
+  'd': { 'b': 12, 'c': 20, 'e': 5 },
+  'e': { 'b': 13, 'd': 5, 'f': 9 },
+  'f': { 'c': 4, 'e': 9 }
+};
+
+let { distance, previous } = dijkstras(graph, 'a');
+
+console.log(distance);
+console.log(previous);
