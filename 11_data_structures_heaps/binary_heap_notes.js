@@ -74,35 +74,35 @@ Translating That Into Array Operations:
 
 */
 
-class MaxHeapDemo {
-  // ..
-  insert(val) {
-    // add the new node to the bottom level, far-left
-    this.array.push(val);
+// class MaxHeapDemo {
+//   // ..
+//   insert(val) {
+//     // add the new node to the bottom level, far-left
+//     this.array.push(val);
 
-    // then, sift that value to the heap to resstore heap property
-    this.siftUp(this.array.length - 1);
-  }
+//     // then, sift that value to the heap to resstore heap property
+//     this.siftUp(this.array.length - 1);
+//   }
 
-  siftUp(idx) {
-    // if the node is already at the root, there is nothing further we can sift
-    // up
-    if (idx === 1) return;
+//   siftUp(idx) {
+//     // if the node is already at the root, there is nothing further we can sift
+//     // up
+//     if (idx === 1) return;
 
-    let parentIdx = this.getParent(idx);
+//     let parentIdx = this.getParent(idx);
 
-    // if the node is bigger than it's parent, we are breaking heap property...
-    if (this.array[parentIdx] < this.array[idx]) {
-      // so swap the node with it's parent
-      [ this.array[parentIdx], this.array[idx] ] = [ this.array[idx], this.array[parentIdx] ];
+//     // if the node is bigger than it's parent, we are breaking heap property...
+//     if (this.array[parentIdx] < this.array[idx]) {
+//       // so swap the node with it's parent
+//       [ this.array[parentIdx], this.array[idx] ] = [ this.array[idx], this.array[parentIdx] ];
 
-      // and continiue to sift it up recursively
-      this.siftUp(parentIdx);
-    }
-  }
+//       // and continiue to sift it up recursively
+//       this.siftUp(parentIdx);
+//     }
+//   }
 
-  //...
-}
+//   //...
+// }
 
 /*
 DeleteMax:
@@ -140,60 +140,60 @@ Translating That Into Array Operations:
 
 */
 
-class MaxHeapDemo {
-  deleteMax() {
-    // recall that we have an empty position at the very front of the array, so
-    // an array length of 2 means there is only 1 item in the heap
+// class MaxHeapDemo {
+//   deleteMax() {
+//     // recall that we have an empty position at the very front of the array, so
+//     // an array length of 2 means there is only 1 item in the heap
 
-    // if there is only 1 element in the heap, simply remove it
-    if (this.array.length === 2) return this.array.pop();
+//     // if there is only 1 element in the heap, simply remove it
+//     if (this.array.length === 2) return this.array.pop();
 
-    // if there are no elements in the heap, do nothing
-    if (this.array.length === 1) return null;
+//     // if there are no elements in the heap, do nothing
+//     if (this.array.length === 1) return null;
 
-    // otherwise remove the last element and make it the root at the front of
-    // the array
-    let max = this.array[1];
-    this.array[1] = this.array.pop();
+//     // otherwise remove the last element and make it the root at the front of
+//     // the array
+//     let max = this.array[1];
+//     this.array[1] = this.array.pop();
 
-    // then, sift the new root down to restore heap property
-    this.siftDown(1);
-    return max;
-  }
+//     // then, sift the new root down to restore heap property
+//     this.siftDown(1);
+//     return max;
+//   }
 
-  siftDown(idx) {
-    let ary = this.array;
-    let leftIdx = this.getLeftchild(idx);
-    let rightIdx = this.getRightChild(idx);
-    let leftVal = ary[leftIdx];
-    let rightVal = ary[rightIdx];
+//   siftDown(idx) {
+//     let ary = this.array;
+//     let leftIdx = this.getLeftchild(idx);
+//     let rightIdx = this.getRightChild(idx);
+//     let leftVal = ary[leftIdx];
+//     let rightVal = ary[rightIdx];
 
-    /*
-      if the node is misisng children, consider the missing children asa the
-      value -Infinity. This allows the node to keep heep property, since any
-      value is greater than -Infinity. This will also give us children values to
-      compare later, undefined should not be used for comparison**
-    */
-   if (leftVal === undefined) leftVal = -Infinity;
-   if (rightVal === undefined) rightVal = -Infinity;
+//     /*
+//       if the node is misisng children, consider the missing children asa the
+//       value -Infinity. This allows the node to keep heep property, since any
+//       value is greater than -Infinity. This will also give us children values to
+//       compare later, undefined should not be used for comparison**
+//     */
+//    if (leftVal === undefined) leftVal = -Infinity;
+//    if (rightVal === undefined) rightVal = -Infinity;
 
-   // if the node is bigger than both children, we have restored heap property,
-   // so exit
-   if (ary[idx] > leftVal && ary[idx] > rightVal) return;
+//    // if the node is bigger than both children, we have restored heap property,
+//    // so exit
+//    if (ary[idx] > leftVal && ary[idx] > rightVal) return;
 
-   // otherwise the node is bigger than one of it's children, so swap this node
-   // with the bigger between the two children**
-   if (leftVal < rightVal) {
-     var swapIdx = rightIdx;
-   } else {
-    var swapIdx = leftIdx;
-   }
-   [ary[idx], ary[swapIdx] ] = [ ary[swapIdx], ary[idx] ];
+//    // otherwise the node is bigger than one of it's children, so swap this node
+//    // with the bigger between the two children**
+//    if (leftVal < rightVal) {
+//      var swapIdx = rightIdx;
+//    } else {
+//     var swapIdx = leftIdx;
+//    }
+//    [ary[idx], ary[swapIdx] ] = [ ary[swapIdx], ary[idx] ];
 
-   // and continue to sift it down recursively
-   this.siftDown(swapIdx);
-  }
-}
+//    // and continue to sift it down recursively
+//    this.siftDown(swapIdx);
+//   }
+// }
 
 // Full MaxHeap Implementation
 class MaxHeap {
@@ -260,6 +260,17 @@ class MaxHeap {
     this.siftDown(swapIdx);
   }
 }
+
+let heap = new MaxHeap();
+heap.insert(8);
+heap.insert(7);
+heap.insert(4);
+heap.insert(3);
+heap.insert(12);
+heap.insert(9);
+heap.insert(21);
+console.log(heap)
+
 
 /*
 Time Complexity Analysis
