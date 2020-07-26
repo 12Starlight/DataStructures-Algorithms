@@ -260,3 +260,36 @@ class MaxHeap {
     this.siftDown(swapIdx);
   }
 }
+
+/*
+Time Complexity Analysis
+  -> insert: 'O(log(n))
+  -> deleteMax: 'O(log(n))
+
+
+Recall that our heap will be a complete/balanced tree. This means it's height
+is 'log(n)' where 'n' is the number of items. Both 'insert' and 'deleteMax'
+have a time complexity of 'log(n)' bc of 'siftUp' and 'siftDown' respectively.
+In the worst case of 'insert', we will have to 'siftUp' a leaf all the way to 
+the root of the tree. In the worst case 'deleteMax', we will have to 'siftDown'
+then new root all the way down to the leaf level. In either case, we will have
+to traverse the full height of the tree, 'log(n)'.
+
+Array Heapify Analysis:
+  Now that we have established 'O(log(n))' for a single insertion, let us
+  analyze the time complexity for turning an array into a heap (we call this
+  heapify, comming in the next project :)). The algorithm itself is simple, just
+  perform an 'insert' for every element. Since there are 'n' elements and each
+  insert requires 'log(n)' time, our total complexity for heapify is 'O(nlog(n))'
+  OR is it...? There is actually a tighter bound on heapify. The proof requires
+  some math that you will not find valuable in your job search, but do understand
+  that the true time complexity of heapify is amortized 'O(n)'. Amortized refers
+  to the fact that our analysis is about performance over many insertions.
+
+*/
+
+/*
+Space Complexity Analysis:
+  -> 'O(n)', since we use a single array to store heap data. 
+
+*/
