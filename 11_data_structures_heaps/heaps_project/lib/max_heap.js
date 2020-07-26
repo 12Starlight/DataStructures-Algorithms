@@ -20,6 +20,16 @@ class MaxHeap {
         this.siftUp(this.array.length - 1);
     }
 
+    siftUp(idx) {
+        if (idx === 1) return;
+        let parent = this.getParent(idx);
+
+        if (this.array[idx] > this.array[parent]) {
+            [ this.array[parent], this.array[idx] ] = [ this.array[idx], this.array[parent] ];
+            this.siftUp(parent);
+        }
+    }
+
 }
 
 module.exports = {
