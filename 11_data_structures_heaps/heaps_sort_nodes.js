@@ -16,7 +16,9 @@ Heap Sort:
 */
 
 // assuming our 'MaxHeap' from the previous section
-const heapSort = (array) {
+let { MaxHeap } = require('./heaps_project/lib/max_heap.js');
+
+const heapSort = (array) => {
   // Step 1: build the heap
   let heap = new MaxHeap();
   array.forEach(num => heap.insert(num));
@@ -29,3 +31,6 @@ const heapSort = (array) {
 
   return sorted;
 }
+
+let arr = [1,2,4,3,8,19,29,28,400];
+console.log(heapSort(arr));
