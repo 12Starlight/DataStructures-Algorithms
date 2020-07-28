@@ -30,8 +30,8 @@ class Trie {
         for (let i = 0; i < word.length; i++) {
             let letter = word[i];
 
-            if (!(letter in root.children)) {
-                root.children[letter] = new Node()
+            if (!(letter in node.children)) {
+                node.children[letter] = new Node()
             }
 
             node = node.children[letter];
@@ -58,13 +58,13 @@ class Trie {
         }
     }
 
-    searchIter(word, root=this.root) {
+    searchIter(word) {
         let node = this.root;
 
         for (let i = 0; i < word.length; i++) {
             let letter = word[i];
 
-            if (!(letter in root.children)) {
+            if (!(letter in node.children)) {
                 return false;
             }
 
