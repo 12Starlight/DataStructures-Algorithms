@@ -73,7 +73,46 @@ class Trie {
 
         return node.isTerminal; 
     }
+
+    wordsWithPrefix(prefix, root=this.root) {
+        if (prefix.length === 0) {
+            let allWords = [];
+            if (root.isTerminal) allWords.push('');
+
+            for (let letter in root.children) {
+                let child = root.children[letter]; // child is a node
+
+                let suffixes = this.wordsWithPrefix(prefix, child);
+                let words = suffixes.map(suffix => letter + suffix);
+                allWords.push(...words);
+            }
+
+            return allWords;
+        } else {
+            let firstLetter = prefix[0]
+            let child = root.children[firstLetter]
+            if (child === undefined) {
+                return [];
+            } else {
+                let suffixes = this.wordsWithPrefix(prefix.slice(1), root.children[firstLetter]);
+                let words = suffixes.map(suffix => firstLetter + suffix);
+                return words;
+            }
+        }
+    }
 }
+
+let trie = new Trie();
+trie.insertRecur('ten');
+trie.insertRecur('tea');
+trie.insertRecur('taco');
+trie.insertRecur('tex');
+trie.insertRecur('in');
+trie.insertRecur('inn');
+trie.insertRecur('inside');
+trie.insertRecur('instructor');
+console.log(trie.wordsWithPrefix(''));
+
 
 module.exports = {
     Node,
