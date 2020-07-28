@@ -191,9 +191,18 @@ class Trie {
   }
 
   print(root=this.root) {
-    
+    for (let letter in root.children) {
+      console.log(letter);
+      this.print(root.children[letter]);
+    }
   }
 }
+
+let myTrie = new Trie()
+myTrie.insert('ten');
+myTrie.insert('tea');
+myTrie.print()
+
 
 /*
 Time Complexity Analysis:
