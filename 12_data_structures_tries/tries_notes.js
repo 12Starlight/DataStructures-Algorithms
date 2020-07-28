@@ -189,4 +189,38 @@ class Trie {
       return false;
     }
   }
+
+  print(root=this.root) {
+    
+  }
 }
+
+/*
+Time Complexity Analysis:
+  Both 'Trie#insert' and 'Trie#search' require 'O(m)' time where 'm' is the
+  length of the target word. Notice that the complexity is not dependent on the
+  number of words stored in the trie, rather it depends on how long the given
+  word is. This makes sense bc we only travel a single path from root to
+  terminal node and this path size is at most the length of the word. 
+
+*/
+
+/*
+Space Complexity Analysis:
+  The space of a trie will vary greatly depending on how often prefixes are
+  shared among entries. Say we have 'n' words and the maximum length of any word
+  is 'm'. The worst-case trie will have no overlapping prefixes and so it will
+  have 'O(n*m)' characters to store.
+
+*/
+
+/*
+When Should We Use Tries?
+  A trie is useful in scenarios where we have a dictionary of words and need
+  efficient look up to check if a given word is contained in the dictionary.
+  Compared to using a hash-based data structure, such as an 'Object' or a 'Set',
+  a 'Trie' is guaranteed to be worst-case 'O(m)' where 'm' is the length of the
+  word. Hash-based structures may be worst-case 'O(n)' where 'n' is the number
+  of entries in the dictionaries dut to hash collisions.
+
+*/
